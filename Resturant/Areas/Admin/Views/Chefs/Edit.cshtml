@@ -1,0 +1,50 @@
+﻿@model ChefsVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="post" asp-action="Edit" asp-controller="chefs" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label asp-for="Name"></label>
+                <input class="form-control" type="text" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Officium"></label>
+                <input class="form-control" type="text" asp-for="Officium" />
+                <span class="text-danger" asp-validation-for="Officium"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Image"></label>
+                <input class="form-control" type="file" asp-for="Image" />
+                <span class="text-danger" asp-validation-for="Image"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Description"></label>
+                <input class="form-control" type="text" asp-for="Description" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Twitter"></label>
+                <input class="form-control" type="text" asp-for="Twitter" />
+                <span class="text-danger" asp-validation-for="Twitter"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Instagram"></label>
+                <input class="form-control" type="text" asp-for="Instagram" />
+                <span class="text-danger" asp-validation-for="Instagram"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Facebook"></label>
+                <input class="form-control" type="text" asp-for="Facebook" />
+                <span class="text-danger" asp-validation-for="Facebook"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="LinkedIn"></label>
+                <input class="form-control" type="text" asp-for="LinkedIn" />
+                <span class="text-danger" asp-validation-for="LinkedIn"></span>
+            </div>
+            <button class="btn btn-success" type="submit">Edit</button>
+            <a class="btn btn-dark" asp-action="Index">Back to Main</a>
+        </form>
+    </div>
+</div>

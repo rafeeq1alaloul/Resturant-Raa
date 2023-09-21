@@ -1,0 +1,30 @@
+﻿@model EventsVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="post" asp-action="Edit" asp-controller="Events" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label asp-for="Title"></label>
+                <input class="form-control" type="text" asp-for="Title" />
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Description"></label>
+                <input class="form-control" type="text" asp-for="Description" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Price"></label>
+                <input class="form-control" type="text" asp-for="Price" />
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Image"></label>
+                <input class="form-control" type="file" asp-for="Image" />
+                <span class="text-danger" asp-validation-for="Image"></span>
+            </div>
+            <button class="btn btn-success" type="submit">Add</button>
+            <a class="btn btn-dark" asp-action="Index">Back to Main</a>
+        </form>
+    </div>
+</div>

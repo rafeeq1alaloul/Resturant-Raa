@@ -1,0 +1,196 @@
+﻿@model List<Menu>
+
+<section id="menu" class="menu">
+    <div class="container" data-aos="fade-up">
+        <br />
+        <div class="section-header">
+            <h2>القائمة لدينا</h2>
+            <p>تحقّق من <span>قائمة يمّي</span></p>
+            <h5 class="text-success">@TempData["Sucsees"]</h5>
+
+        </div>
+
+        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+            <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                    <h4>مقبلات</h4>
+                </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+                    <h4>الفطور</h4>
+                </a><!-- End tab nav item -->
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+                    <h4>الغداء</h4>
+                </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+                    <h4>العشاء</h4>
+                </a>
+            </li><!-- End tab nav item -->
+
+        </ul>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+            <div class="tab-pane fade active show" id="menu-starters">
+
+                <div class="tab-header text-center">
+                    <div class="row gy-5">
+
+                    @foreach (var item in Model)
+                    {
+                        @if (item.MeatId == 1)
+                        {
+                        <div style="display: inline" class="col-lg-4 menu-item">
+                                <a href="~/Images/@item.ImagePath" class="glightbox"><img style="height: 120px" src="~/Images/@item.ImagePath" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.MenuName</h4>
+                                <p class="ingredients">
+                                    @item.Ingredients
+                                </p>
+                                <p class="price">
+                                    $@item.Price
+                                </p>
+                                    <p>
+                                        <a class="btnAddCart btn btn-light border-danger" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MenuId">اضف الى السلة<i class="bi bi-cart"></i></a>
+                                    </p>
+                            </div>
+
+                            <!-- Menu Item -->
+                        }
+                    }
+                    </div>
+                </div>
+            </div><!-- End Starter Menu Content -->
+            
+            <div class="tab-pane fade" id="menu-breakfast">
+
+
+                <div class="row gy-5">
+
+                    <div class="tab-header text-center">
+                        <div class="row gy-5">
+
+                    @foreach (var item in Model)
+                    {
+                        @if (item.MeatId == 2)
+                        {
+                            <div class="col-lg-4 menu-item">
+                                <a href="~/Images/@item.ImagePath" class="glightbox"><img src="~/Images/@item.ImagePath" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.MenuName</h4>
+                                <p class="ingredients">
+                                    @item.Ingredients
+                                </p>
+                                <p class="price">
+                                    $@item.Price
+                                </p>
+                                        <p>
+                                            <a class="btn btn-light border-danger" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MenuId">اضف الى السلة<i class="bi bi-cart"></i></a>
+                                        </p>
+                            </div>
+
+                            <!-- Menu Item -->
+                        }
+                    }
+
+                    </div>
+                </div>
+
+                </div>
+            </div><!-- End Breakfast Menu Content -->
+
+            <div class="tab-pane fade" id="menu-lunch">
+
+                <div class="tab-header text-center">
+                    <div class="row gy-5">
+
+
+                @foreach (var item in Model)
+                {
+                    @if (item.MeatId == 3)
+                    {
+                        <div class="col-lg-4 menu-item">
+                            <a href="~/Images/@item.ImagePath" class="glightbox"><img src="~/Images/@item.ImagePath" class="menu-img img-fluid" alt=""></a>
+                            <h4>@item.MenuName</h4>
+                            <p class="ingredients">
+                                @item.Ingredients
+                            </p>
+                            <p class="price">
+                                $@item.Price
+                            </p>
+                                    <p>
+                                        <a class="btn btn-light border-danger" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MenuId">اضف الى السلة<i class="bi bi-cart"></i></a>
+                                    </p>
+                        </div>
+                        <!-- Menu Item -->
+                    }
+                }
+                    </div>
+                </div>
+
+            </div><!-- End Lunch Menu Content -->
+
+            <div class="tab-pane fade" id="menu-dinner">
+
+                <div class="tab-header text-center">
+                    <div class="row gy-5">
+
+                @foreach (var item in Model)
+                {
+                    @if (item.MeatId == 4)
+                    {
+                        <div class="col-lg-4 menu-item">
+                            <a href="~/Images/@item.ImagePath" class="glightbox"><img src="~/Images/@item.ImagePath" class="menu-img img-fluid" alt=""></a>
+                            <h4>@item.MenuName</h4>
+                            <p class="ingredients">
+                                @item.Ingredients
+                            </p>
+                            <p class="price">
+                                $@item.Price
+                            </p>
+                                    <p>
+                                        <a class="btn btn-light border-danger" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MenuId">اضف الى السلة<i class="bi bi-cart"></i></a>
+                                    </p>
+                        </div>
+
+                        <!-- Menu Item -->
+                    }
+                }
+                </div>
+                </div>
+
+            </div><!-- End Dinner Menu Content -->
+
+        </div>
+
+    </div>
+</section>
+@* 
+@section Scripts{
+    <script>
+        $(document).on('click', '.btnAddCart', function (event) {
+
+            event.preventDefault();
+
+            const url = $(this).attr('href');
+
+            const btn = $(this);
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        });
+    </script>
+}
+
+ *@

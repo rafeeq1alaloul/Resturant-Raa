@@ -1,0 +1,19 @@
+﻿@model Menu
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item"><b class="text-primary">Name is:</b> @Model.MenuName</li>
+        <li class="list-group-item"><b class="text-primary">Name is:</b> @Model.Ingredients</li>
+        <li class="list-group-item"><b class="text-primary">Name is:</b> @Model.Price</li>
+        <li class="list-group-item"><b class="text-primary">Name is:</b> @Model.Meat.Name</li>
+        <li class="list-group-item">
+            <b class="text-primary">Image:</b>
+            <br />
+            <img style="width: 250px" src="~/Images/@Model.ImagePath">
+        </li>
+    </ul>
+</div>
+<br />
+<div class="container">
+    <a class="btn btn-dark" asp-action="Index">Back to Main</a>
+</div>

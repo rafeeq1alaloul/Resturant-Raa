@@ -1,0 +1,54 @@
+﻿<header dir="rtl" id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <a asp-action="About" asp-controller="Home" class="logo d-flex align-items-center me-auto me-lg-0">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="~/assets/img/logo.png" alt=""> -->
+            <h1>يمّي</h1>
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>  
+                
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="UserAuth" asp-action="Rigester">تسجيل </a></li>
+                    <li><a asp-controller="UserAuth" asp-action="Login">دخول</a></li>
+                }
+                else
+                {
+                    if (User.IsInRole("Super Admin") || User.IsInRole("Admin"))
+                    {
+                        if (User.IsInRole("Super Admin"))
+                        {
+                        <li><a asp-area="Admin" asp-action="Index" asp-controller="Menu">لوحة الأدمن</a></li>
+                        }
+                        <li><a asp-area="Admin" asp-action="Index" asp-controller="Menu">لوحة التحكم</a></li>
+                        <li><a asp-action="Index" asp-controller="Home">الرئيسية</a></li>
+                        <li><a asp-action="About" asp-controller="Home">عنا</a></li>
+                        <li><a asp-action="Menu" asp-controller="Home">القائمة</a></li>
+                        <li><a asp-action="Events" asp-controller="Home">الأحداث</a></li>
+                        <li><a asp-action="Chefs" asp-controller="Home">الطباخين</a></li>
+                        <li><a asp-controller="UserAuth" asp-action="Logout">خروج</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-action="Index" asp-controller="Home">الرئيسية</a></li>
+                        <li><a asp-action="About" asp-controller="Home">عنا</a></li>
+                        <li><a asp-action="Menu" asp-controller="Home">القائمة</a></li>
+                        <li><a asp-action="Events" asp-controller="Home">الأحداث</a></li>
+                        <li><a asp-action="Chefs" asp-controller="Home">الطباخين</a></li>
+                        <li><a asp-action="Contacts" asp-controller="Home">التواصل</a></li>
+                        <li><a asp-controller="UserAuth" asp-action="Logout">خروج</a></li>
+                    }
+                }
+            </ul>
+        </nav><!-- .navbar -->
+        @if (User.IsInRole("User"))
+        {
+        <a style="margin:0" class="btn-book-a-table" asp-action="Index" asp-controller="CheckOut"><i style="font-size:20px" class="bi bi-cart"></i></a>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        }
+    </div>
+</header><!-- End Header -->

@@ -1,0 +1,23 @@
+﻿@model Chefs
+
+<div class="container">
+<ul class="list-group">
+    <li class="list-group-item"><b class="text-primary">Name is:</b> @Model.Name</li>
+    <li class="list-group-item"><b class="text-primary">Officium:</b> @Model.Officium</li>
+    <li class="list-group-item"><b class="text-primary">Image:</b> @Model.ImagePath</li>
+    <li class="list-group-item"><b class="text-primary">Description:</b> @Model.Description</li>
+    <li class="list-group-item"><b class="text-primary">Twitter:</b> @Model.Twitter</li>
+    <li class="list-group-item"><b class="text-primary">Facebook:</b> @Model.Facebook</li>
+    <li class="list-group-item"><b class="text-primary">Instagram:</b> @Model.Instagram</li>
+    <li class="list-group-item"><b class="text-primary">LinkedIn:</b> @Model.LinkedIn</li>
+    <li class="list-group-item">
+    <b class="text-primary">Image:</b>
+    <br />
+    <img style="width: 250px" src="~/Images/@Model.ImagePath">
+    </li>
+    </ul>
+</div>
+<br />
+<div class="container">
+    <a class="btn btn-dark" asp-action="Index">Back to Main</a>
+</div>

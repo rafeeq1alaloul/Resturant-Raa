@@ -1,0 +1,57 @@
+﻿@model RigesterVM
+<div align="center">
+	<section class="h-70">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="brand">
+						<img src="~/assetsAuth/img/logo.jpg" alt="bootstrap 4 login page">
+					</div>
+					<div class="card fat" style="width: 500px">
+                        <div class="card-body">
+							<h4 class="card-title">تسجيل</h4>
+							<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+							<form method="post" class="my-login-validation text-right" asp-action="Rigester" asp-controller="UserAuth">
+								<div class="form-group">
+									<label class="form-label" asp-for="FirstName"></label>
+									<input class="form-control" asp-for="FirstName" autofocus>
+									<span class="text-danger" asp-validation-for="FirstName"></span>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" asp-for="lastName"></label>
+									<input class="form-control" asp-for="lastName" autofocus>
+									<span class="text-danger" asp-validation-for="lastName"></span>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" asp-for="Email"></label>
+									<input class="form-control" asp-for="Email" autofocus>
+									<span class="text-danger" asp-validation-for="Email"></span>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" asp-for="Password"></label>
+									<input class="form-control" asp-for="Password" autofocus>
+									<span class="text-danger" asp-validation-for="Password"></span>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" asp-for="ConfirmPassword"></label>
+									<input class="form-control" asp-for="ConfirmPassword" autofocus>
+									<span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="col-form-label btn btn-primary">تسجيل</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="~/assetsAuth/js/my-login.js"></script>

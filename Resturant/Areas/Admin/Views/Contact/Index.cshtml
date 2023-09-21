@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Resturant.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Massage
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.Massage
+            </td>
+            <td>
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-book-half btn btn-dark"></i></a>
+                        <a asp-action="Delete" class="btnDeleteArticle" asp-route-id="@item.Id"><i class="bi bi-trash3-fill btn btn-danger"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+@section Scripts{
+    <script>
+        //const deleteButtons = document.getElementsByClassName("btnDeleteArticle");
+
+        //console.log(deleteButtons );
+        //deleteButtons.forEach(function (el) {
+        //    console.log(el)
+        //});
+
+        $(document).on('click', '.btnDeleteArticle', function (event) {
+
+            event.preventDefault();
+
+            const url = $(this).attr('href');
+
+            const btn = $(this);
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.get(url, function (data, status) {
+                        btn.closest("tr").remove();
+                        Swal.fire(
+                            'Deleted!',
+                            data.message,
+                            'success'
+                        )
+                        //alert("Data: " + data + "\nStatus: " + status);
+                    });
+                }
+            })
+
+            //.then((response) => response.json());
+
+
+
+        });
+    </script>
+}
+@* //fetch(url)
+//    .then(function (response) { return response.json() })
+//    .then(function (data) {
+//        btn.closest("tr").remove();
+//        Swal.fire(
+//            'Deleted!',
+//            data.message,
+//            'success'
+//        )
+//    }); *@

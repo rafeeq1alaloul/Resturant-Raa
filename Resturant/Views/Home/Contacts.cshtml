@@ -1,0 +1,57 @@
+﻿@model ContactVM
+
+<section id="book-a-table" class="book-a-table">
+    <div class="container" data-aos="fade-up">
+        <br />
+        @if (@TempData["Succses Massage"] != null)
+        {
+            <div style="background-color: lightgreen; margin: 0;width: calc(100% - 20px);height:40px;">
+            <h5 style="color:white">@TempData["Succses Massage"]</h5>
+            </div>
+        }
+        
+        <div class="section-header">
+            <p>نسعد <span>برؤية تعليقك</span> عنا</p>
+        </div>
+
+        <div class="row g-0">
+
+            <div class="col-lg-4 reservation-img" style="background-image: url(/assets/img/reservation.jpg);" data-aos="zoom-out" data-aos-delay="200"></div>
+
+            <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
+                <form asp-controller="Home" asp-action="Contacts" method="post">
+                    <div class="row gy-4">
+                        <div class="col-lg-4 col-md-6">
+                            <input asp-for="Name" class="form-control" placeholder="الأسم" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <input asp-for="Email" class="form-control" placeholder="البريد الألكتروني" data-rule="minlen:4" data-msg="Please enter at least 4 chars" disabled>
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <input asp-for="Address" class="form-control"  placeholder="العنوان" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <span class="text-danger" asp-validation-for="Address"></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <input asp-for="Phone" class="form-control" placeholder="رقم الهاتف" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <span class="text-danger" asp-validation-for="Phone"></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <input asp-for="City" class="form-control" placeholder="المدينة" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <span class="text-danger" asp-validation-for="City"></span>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea asp-for="Massage" class="form-control" rows="5" placeholder="الموضوع"></textarea>
+                        <span class="text-danger" asp-validation-for="Massage"></span>
+                    </div>
+                    <br />
+                    <div class="text-center"><button class="col-lg-4 col-md-6 btn btn-dark" type="submit">أرسل</button></div>
+                </form>
+            </div><!-- End Reservation Form -->
+
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,135 @@
+﻿@model List<ShoppingCartItem>
+
+
+@{
+    Layout = "_LayoutOutFotter";
+    decimal Total(decimal price, int quantity)
+    {
+        decimal total = price * (decimal)quantity;
+        return (total);
+    }
+
+    
+}
+
+@if (Model.Any())
+{
+    <td>
+        <section class="h-100" style="background-color: #eee;">
+            <div class="container h-100 py-5">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-9">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h2>
+                                 
+                                </h2>
+
+                            </div>
+                        <div>
+                            <h2>
+                                السلة
+                            </h2>
+
+                        </div>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="card rounded-3 mb-3">
+                                <div class="card-body p-1">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img style="height:80px; width: 110px" src="/Images/@item.ImagePath"
+                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-0">
+                                            <h5 class="mb-0">الكمية:@item.Quantity</h5>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-0">
+                                        <h5 class="mb-0">المجموع: $@Total(item.Price, item.Quantity)</h5>
+
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-0">
+                                            <h5 class="mb-0">السعر : $@item.Price</h5>
+                                        </div>
+                                    <div class="col-md-1 col-lg-1 col-x0-1 text-end">
+                                        <a class="btnDeleteCart" asp-action="Delete" asp-controller="Cart" asp-route-id="@item.Id"><i class="bi bi-trash3-fill btn btn-danger"></i></a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card">
+                            <div class="card-body">
+                                <a type="button" asp-action="CheckOut" asp-controller="CheckOut" class="btn btn-warning btn-block btn-lg">أكمل الطلب</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        </td>
+    } else {
+    <div class="wrapper">
+        <br />
+
+
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="container">
+
+            <h1 class="text-danger">السلة فارغة</h1>
+            <h1>ما رأيك <a style="color:blue;" asp-action="Menu" asp-controller="Home">بتصفح</a> وجباتنا اللذيذة والطلب</h1>
+        </div>
+
+
+        <br />
+    </div>
+    }
+
+
+@section Scriptt{
+    <script>
+        $(document).on('click', '.btnDeleteCart', function (event) {
+
+            event.preventDefault();
+
+            const url = $(this).attr('href');
+
+            const btn = $(this);
+
+            Swal.fire({
+                title: 'هل أنت متأكد انك تريد ذلك؟',
+                text: "!لن تستطسع التراجع عن هذا",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'تراجع'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.get(url, function (data, status) {
+                        btn.closest("td").remove();
+                        Swal.fire(
+                            '!محذوف',
+                            data.message,
+                            'success'
+                        )
+                    });
+                }
+            })
+        });
+    </script>
+}

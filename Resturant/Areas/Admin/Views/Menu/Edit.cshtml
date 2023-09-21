@@ -1,0 +1,34 @@
+﻿@model MenuVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="post" asp-action="Edit" asp-controller="Menu" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label asp-for="MenuName"></label>
+                <input class="form-control" type="text" asp-for="MenuName" />
+                <span class="text-danger" asp-validation-for="MenuName"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Ingredients"></label>
+                <input class="form-control" type="text" asp-for="Ingredients" />
+                <span class="text-danger" asp-validation-for="Ingredients"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Price"></label>
+                <input class="form-control" type="text" asp-for="Price" />
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Image"></label>
+                <input class="form-control" type="file" asp-for="Image" />
+                <span class="text-danger" asp-validation-for="Image"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="MeatId" class="form-label"></label>
+                <select class="dropdown-item" asp-for="MeatId" asp-items="Model.MeatList"></select>
+            </div>
+            <button class="btn btn-success" type="submit">Add</button>
+            <a class="btn btn-dark" asp-action="Index">Back to Main</a>
+        </form>
+    </div>
+</div>
